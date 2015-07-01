@@ -1,0 +1,3 @@
+[submodule "src-java"]
+	path = src-java
+	url = git@github.com:AidanDelaney/K-ttelbr-cke.git

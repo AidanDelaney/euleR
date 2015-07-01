@@ -1,2 +1,2 @@
 .onLoad <- function(libname, pkgname)
-  .jpackage("venneuler", "venneuler.jar")
+  .jpackage("euleR", "euleR.jar")

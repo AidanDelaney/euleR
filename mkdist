@@ -1,33 +1,17 @@
 #!/bin/sh
 
-PNAME=venneuler
-SWD=`pwd`
-VER=`awk -v ORS= '/Version:/ { print $2 }' DESCRIPTION`
-echo "Removing previous dist ..."
-rm -rf /tmp/${PNAME}
-echo "Copying package base ..."
-cp -r ../${PNAME} /tmp
+PNAME=euleR
+LIBVER=1.0.0
 
-rm -f /tmp/${PNAME}/mkdist
-
-cd /tmp/${PNAME}
-
-echo "Removing CVS and backup stuff ..."
-find . -name CVS -o -name .svn | xargs rm -rf
-find . -name \*~ | xargs rm -f
+LIBNAME=K-ttelbr-cke
+LIBVER=1.0.0-SNAPSHOT
 
 echo "Compiling Java sources ..."
-(cd src-java; make && make install && make clean; cd ..)
+(cd src-java; mvn package; cd ..)
 
 echo "$PNAME version ${VER}"
-#cat DESCRIPTION| sed "s/Version:.*/Version: ${VER}/" > d
-#mv d DESCRIPTION
 
 echo "Creating package ..."
-cd ..
-tar fcz ${PNAME}_${VER}.tar.gz ${PNAME}
-cd ${SWD}
-cp /tmp/${PNAME}_${VER}.tar.gz ..
-rm -rf /tmp/${PNAME}
+mkdir inst
+cp src-java/target/${LIBNAME}-${LIBVER}.jar inst/
 echo "Done."
-ls -l ../${PNAME}_${VER}.tar.gz
