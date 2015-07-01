@@ -1,17 +1,25 @@
 #!/bin/sh
 
 PNAME=euleR
-LIBVER=1.0.0
+PVER=0.0.1
 
-LIBNAME=K-ttelbr-cke
-LIBVER=1.0.0-SNAPSHOT
+KLIBNAME=K-ttelbr-cke
+KLIBVER=1.0.0-SNAPSHOT
+
+VLIBNAME=vennom
+VLIBVER=1.0.0-SNAPSHOT
 
 echo "Compiling Java sources ..."
-(cd src-java; mvn package; cd ..)
+(cd src-java/${KLIBNAME}; mvn package; cd ../..)
+(cd src-java/${VLIBNAME}; mvn package; cd ../..)
 
 echo "$PNAME version ${VER}"
 
 echo "Creating package ..."
-mkdir inst
-cp src-java/target/${LIBNAME}-${LIBVER}.jar inst/
+mkdir -p inst/java
+
+cp src-java/${KLIBNAME}/target/${KLIBNAME}-${KLIBVER}.jar inst/java
+cp src-java/${VLIBNAME}/target/${VLIBNAME}-${VLIBVER}.jar inst/java
+
+tar --transform='s,^,euleR/,' -czvf ${PNAME}-${PVER}.tar.gz inst man R DESCRIPTION NEWS NAMESPACE
 echo "Done."

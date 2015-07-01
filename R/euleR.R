@@ -1,4 +1,4 @@
-venneuler <- function(combinations, weights, ...) {
+euleR <- function(combinations, weights, ...) {
   if (missing(combinations)) stop("combinations must be specified")
   if (inherits(combinations, "table")) {
     if (!missing(weights)) warning("combinations is a table yet weights are also specified - ignoring weights")
@@ -32,14 +32,14 @@ venneuler <- function(combinations, weights, ...) {
     combinations <- as.character(en)
   }
   if (is.matrix(combinations) && is.character(combinations) && dim(combinations)[2] == 2) {
-    vd <- .jnew("edu/uic/ncdm/venn/data/VennData", as.character(combinations[,1]), as.character(combinations[,2]))
+#    vd <- .jnew("edu/uic/ncdm/venn/data/VennData", as.character(combinations[,1]), as.character(combinations[,2]))
   } else {
     if (!is.character(combinations)) stop("combinations must be either a character vector, a table, a named numeric vector or a character matrix with two columns")
     if (missing(weights)) weights <- rep(1, length(combinations))
-    vd <- .jnew("edu/uic/ncdm/venn/data/VennData", as.character(combinations), as.double(weights))
+#    vd <- .jnew("edu/uic/ncdm/venn/data/VennData", as.character(combinations), as.double(weights))
   }
-  a <- .jnew("edu/uic/ncdm/venn/VennAnalytic")
-  g <- .jcall(a, "Ledu/uic/ncdm/venn/VennDiagram;", "compute", vd)
+  a <- .jnew("org/eulerdiagrams/euleR/EulerDrawer")
+  g <- .jcall(a, "Ledu/uic/ncdm/venn/VennDiagram;", "layout")
   ct <- lapply(.jevalArray(.jfield(g, "[[D", "centers", convert=FALSE)), .jevalArray)
   n <- length(ct)
   ct <- matrix(unlist(ct), ncol=2, byrow=TRUE)
