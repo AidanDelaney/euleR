@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.eulerdiagrams</groupId>
-  <artifactId>euler</artifactId>
+  <artifactId>K-ttelbr-cke</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <name>euleR</name>
+  <name>Köttelbrücke</name>
   <description>A VenNom adaptor that takes input and produces output suitable for plugging into R.</description>
 
   <licenses>
@@ -43,7 +43,7 @@
             </manifest>
             <manifestEntries>
               <mode>development</mode>
-              <url>https://github.com/AidanDelaney/euleR</url>
+              <url>https://github.com/AidanDelaney/K-ttelbr-cke</url>
             </manifestEntries>
           </archive>
         </configuration>
