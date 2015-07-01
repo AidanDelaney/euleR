@@ -5,6 +5,8 @@ import java.util.*;
 /**
  * An AbstractDiagram is a set of zones defined over a fixed set of contours.
  *
+ * We don't use org.eulerdiagrams.vennom.apCircles.AbstractDiagram as that is expected to be hugely refactored.
+ *
  */
 class AbstractDiagram {
     private Set<Contour> contours;

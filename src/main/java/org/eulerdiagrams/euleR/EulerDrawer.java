@@ -1,12 +1,108 @@
 package org.eulerdiagrams.euleR;
 
+import org.eulerdiagrams.vennom.apCircles.drawers.APForceModel;
+import org.eulerdiagrams.vennom.graph.*;
+import org.eulerdiagrams.vennom.apCircles.*;
+import static org.eulerdiagrams.vennom.apCircles.display.APCircleDisplay.*;
+
 import edu.uic.ncdm.venn.VennDiagram;
+import org.eulerdiagrams.vennom.graph.drawers.GraphDrawer;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 class EulerDrawer {
+    static {
+        /*
+         * The lines until the <<< marker are junk that is necessary to set before you can use the VenNom graph drawer.
+         * It's not pretty, but without setting properties of the EdgeTypes you get NullPointerExceptions from the
+         * VenNom code.
+         */
+        FIXED = new EdgeType("fixed");
+        FIXED.setLineColor(Color.black);
+        FIXED.setTextColor(Color.black);
+        FIXED.setSelectedLineColor(Color.gray);
+        FIXED.setPriority(1020);
+
+        ATTRACTOR = new EdgeType("attractor");
+        ATTRACTOR.setLineColor(Color.green);
+        ATTRACTOR.setTextColor(Color.green);
+        ATTRACTOR.setSelectedLineColor(Color.gray);
+        ATTRACTOR.setPriority(1019);
+
+        REPULSOR = new EdgeType("repulsor");
+        REPULSOR.setLineColor(Color.red);
+        REPULSOR.setTextColor(Color.red);
+        REPULSOR.setSelectedLineColor(Color.gray);
+        REPULSOR.setPriority(1018);
+
+        Graph.DEFAULT_NODE_TYPE.setHeight(20);
+        Graph.DEFAULT_NODE_TYPE.setWidth(20);
+        Graph.DEFAULT_NODE_TYPE.setBorderColor(Color.WHITE);
+        Graph.DEFAULT_NODE_TYPE.setTextColor(Color.BLUE);
+        Graph.DEFAULT_EDGE_TYPE = FIXED;
+        // <<<
+    }
+
     public EulerDrawer(AbstractDiagram diagram) {
     }
 
     public VennDiagram layout() {
-        return null;
+        ArrayList<String> zones = new ArrayList<String>(Arrays.asList("0", "a", "b", "ab"));
+        HashMap<String, Double> zonemap = new HashMap<String, Double>();
+        zonemap.put("0", 1.0);
+        zonemap.put("a", 100.0);
+        zonemap.put("b", 100.0);
+        zonemap.put("ab", 10.0);
+        org.eulerdiagrams.vennom.apCircles.AbstractDiagram ad = new org.eulerdiagrams.vennom.apCircles.AbstractDiagram(zones);
+        AreaSpecification as = new AreaSpecification(ad, zonemap);
+        JFrame frame = new JFrame();
+        GraphDrawer gd = new APForceModel();
+        APCirclePanel apc = new APCirclePanel(frame);
+        apc.setSpecification(as);
+        apc.addGraphDrawer(gd);
+        apc.setGraph(as.generateAugmentedIntersectionGraph());
+        gd.layout();
+
+        return graphToVennDiagram(gd.getGraph());
+    }
+
+    private VennDiagram graphToVennDiagram(Graph graph) {
+        /*
+         * We need the node centre and the label.  The label is a double valued radius packed into a string.
+         */
+        final int XCOORD=0, YCOORD=1;
+
+        int numNodes = graph.getNodes().size();
+        double [][] centres  = new double[numNodes][2];
+        double [] diameters = new double[numNodes];
+        String [] labels = new String[numNodes];
+
+        List<Node> nodes = graph.getNodes();
+        for(int i = 0; i<numNodes; i++) {
+            Node node = nodes.get(i);
+
+            // Get centre
+            centres[i][XCOORD] = node.getCentre().getX();
+            centres[i][YCOORD] = node.getCentre().getY();
+
+            // Get diameter
+            double radius = 0.0;
+            try {
+                radius = new Double(node.getLabel());
+            } catch (NumberFormatException nfe) {
+                // TODO: What to do here?
+            }
+            diameters[i] = radius*2;
+
+            // Get label string
+            labels[i] = node.getLabel();
+        }
+
+        return new VennDiagram(centres, diameters, null, null, labels, null, null, 0.0, 0.0, 0.0);
     }
 }
