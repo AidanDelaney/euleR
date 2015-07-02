@@ -89,8 +89,8 @@ class EulerDrawer {
 
         // You can't pass back a null value to the venneuler R code and have it deal with it in a sane manner.
         // Therefore, we're going to pass back an empty array in place of null.
-        double [] emptyDoubles = new double[0];
-        String [] emptyStrings = new String[0];
+        double [] emptyDoubles = new double[numNodes];
+        String [] emptyStrings = new String[numNodes];
 
         List<Node> nodes = graph.getNodes();
         for(int i = 0; i<numNodes; i++) {
