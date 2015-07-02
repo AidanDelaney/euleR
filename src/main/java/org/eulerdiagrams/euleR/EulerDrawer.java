@@ -48,6 +48,10 @@ class EulerDrawer {
         // <<<
     }
 
+    // FIXME: Default constructor only here to help with initial R integration.
+    public EulerDrawer() {
+    }
+
     public EulerDrawer(AbstractDiagram diagram) {
     }
 
@@ -82,6 +86,12 @@ class EulerDrawer {
         double [] diameters = new double[numNodes];
         String [] labels = new String[numNodes];
 
+
+        // You can't pass back a null value to the venneuler R code and have it deal with it in a sane manner.
+        // Therefore, we're going to pass back an empty array in place of null.
+        double [] emptyDoubles = new double[0];
+        String [] emptyStrings = new String[0];
+
         List<Node> nodes = graph.getNodes();
         for(int i = 0; i<numNodes; i++) {
             Node node = nodes.get(i);
@@ -103,6 +113,7 @@ class EulerDrawer {
             labels[i] = node.getLabel();
         }
 
-        return new VennDiagram(centres, diameters, null, null, labels, null, null, 0.0, 0.0, 0.0);
+        // centers, diameters, areas,residuals, circleLabels, residualLabels, double[] colors, double stress, double stress01, double stress05) {
+        return new VennDiagram(centres, diameters, emptyDoubles, emptyDoubles, labels, emptyStrings, emptyDoubles, 0.0, 0.0, 0.0);
     }
 }
