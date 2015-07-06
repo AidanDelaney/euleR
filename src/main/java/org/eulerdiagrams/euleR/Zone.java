@@ -15,6 +15,10 @@ public class Zone {
         this.out = outset;
     }
 
+    public final Set<Contour> getInContours() {
+        return in;
+    }
+
     public boolean equals(Object o) {
         if(o instanceof Zone) {
             Zone z = (Zone) o;

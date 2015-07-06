@@ -15,4 +15,9 @@ class Contour {
     public boolean equals(Object o) {
         return o.equals(label);
     }
+
+    @Override
+    public int hashCode() {
+        return label.hashCode();
+    }
 }

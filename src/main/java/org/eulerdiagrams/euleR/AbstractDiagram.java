@@ -29,4 +29,12 @@ class AbstractDiagram {
         zones.put(new Zone(new HashSet<Contour>(Arrays.asList(inset)), outzones), weight);
         return true;
     }
+
+    public final Set<Contour> getContours() {
+        return contours;
+    }
+
+    public final Map<Zone, Double> getZones() {
+        return zones;
+    }
 }
