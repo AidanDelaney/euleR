@@ -32,13 +32,13 @@ euleR <- function(combinations, weights, ...) {
     combinations <- as.character(en)
   }
   if (is.matrix(combinations) && is.character(combinations) && dim(combinations)[2] == 2) {
-#    vd <- .jnew("edu/uic/ncdm/venn/data/VennData", as.character(combinations[,1]), as.character(combinations[,2]))
+    vd <- .jnew("edu/uic/ncdm/venn/data/VennData", as.character(combinations[,1]), as.character(combinations[,2]))
   } else {
     if (!is.character(combinations)) stop("combinations must be either a character vector, a table, a named numeric vector or a character matrix with two columns")
     if (missing(weights)) weights <- rep(1, length(combinations))
-#    vd <- .jnew("edu/uic/ncdm/venn/data/VennData", as.character(combinations), as.double(weights))
+    vd <- .jnew("edu/uic/ncdm/venn/data/VennData", as.character(combinations), as.double(weights))
   }
-  a <- .jnew("org/eulerdiagrams/euleR/EulerDrawer")
+  a <- .jnew("org/eulerdiagrams/euleR/EulerDrawer", vd)
   g <- .jcall(a, "Ledu/uic/ncdm/venn/VennDiagram;", "layout")
   ct <- lapply(.jevalArray(.jfield(g, "[[D", "centers", convert=FALSE)), .jevalArray)
   n <- length(ct)
