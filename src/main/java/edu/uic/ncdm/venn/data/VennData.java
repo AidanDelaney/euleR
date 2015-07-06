@@ -29,7 +29,7 @@ public class VennData {
     /** create Venn data by specifying raw contents - no consistency checks are made so it is the responsibility of the caller to make sure the content combination is valid.
      *  @param data (see {@link #data})
      *  @param areas (see {@link #areas})
-     *  @param isAreas (see {@limk #isAreas}) */
+     *  @param isAreas (see {@link #isAreas}) */
     public VennData(String[][] data, double[] areas, boolean isAreas) {
         this.data = data;
         this.areas = areas;
