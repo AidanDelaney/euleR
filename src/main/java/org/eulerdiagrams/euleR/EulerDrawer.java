@@ -53,6 +53,21 @@ class EulerDrawer {
     }
 
     public EulerDrawer(VennData diagram) {
+        String [][] data = diagram.data;
+        HashMap<String, Double> sets = new HashMap<String, Double>();
+        for (int i = 0; i < data.length; i++) {
+            String[] s = data[i][0].split("&");
+            for (int j = 0; j < s.length; j++) {
+                if (!sets.containsKey(s[j])) {
+                    Double cat = new Double(sets.size());
+                    sets.put(s[j], cat);
+                }
+            }
+        }
+
+        for(String s: sets.keySet()) {
+            System.out.println(s + " " + sets.get(s));
+        }
     }
 
     public VennDiagram layout() {
