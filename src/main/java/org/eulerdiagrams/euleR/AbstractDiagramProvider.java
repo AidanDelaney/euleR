@@ -9,6 +9,7 @@ import org.eulerdiagrams.vennom.apCircles.AreaSpecification;
 
 import java.util.*;
 import com.google.common.collect.*;
+import org.eulerdiagrams.vennom.graph.Graph;
 
 /**
  * Parses a VennData into an AbstractDiagram and provide access to
@@ -58,6 +59,10 @@ class AbstractDiagramProvider {
         }
     }
 
+    public AbstractDiagramProvider(org.eulerdiagrams.euleR.AbstractDiagram diagram) {
+        this.diagram = diagram;
+    }
+
     public AreaSpecification asAreaSpecification() {
         // We have to translate our internal AbstractDiagram into an
         // apCircles.AbstractDiagram, then into an AreaSpecification.
@@ -96,6 +101,11 @@ class AbstractDiagramProvider {
         return aspec;
     }
 
+    //TODO
+    // Convert the labes in the Graph back to a VennDiagram
+    public VennDiagram asVennDiagram(Graph g) throws NoSuchMethodException {
+        throw new NoSuchMethodException();
+    }
     /**
      * This syntax is too esoteric to warrant a parser generator, hence this
      * hand-rolled excuse.

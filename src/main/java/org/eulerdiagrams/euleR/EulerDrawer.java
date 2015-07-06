@@ -51,6 +51,10 @@ class EulerDrawer {
 
     private AbstractDiagramProvider adp;
 
+    public EulerDrawer(AbstractDiagram diagram) {
+        adp = new AbstractDiagramProvider(diagram);
+    }
+
     public EulerDrawer(VennData diagram) {
         adp = new AbstractDiagramProvider(diagram);
     }

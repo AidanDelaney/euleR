@@ -23,9 +23,9 @@ public class TestEuler {
         d.addZone(50.0, a, b);
 
         //FIXME
-        //EulerDrawer ed = new EulerDrawer(d);
-        //VennDiagram vd = ed.layout();
+        EulerDrawer ed = new EulerDrawer(d);
+        VennDiagram vd = ed.layout();
 
-        //assertThat(vd, is(not(nullValue())));
+        assertThat(vd, is(not(nullValue())));
     }
 }
