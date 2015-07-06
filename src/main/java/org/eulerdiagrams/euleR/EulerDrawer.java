@@ -6,6 +6,7 @@ import org.eulerdiagrams.vennom.apCircles.*;
 import static org.eulerdiagrams.vennom.apCircles.display.APCircleDisplay.*;
 
 import edu.uic.ncdm.venn.VennDiagram;
+import edu.uic.ncdm.venn.data.VennData;
 import org.eulerdiagrams.vennom.graph.drawers.GraphDrawer;
 
 import javax.swing.*;
@@ -51,7 +52,7 @@ class EulerDrawer {
     public EulerDrawer(AbstractDiagram diagram) {
     }
 
-    public EulerDrawer(VennDiagram diagram) {
+    public EulerDrawer(VennData diagram) {
     }
 
     public VennDiagram layout() {
