@@ -49,36 +49,14 @@ class EulerDrawer {
         // <<<
     }
 
-    public EulerDrawer(AbstractDiagram diagram) {
-    }
+    private AbstractDiagramProvider adp;
 
     public EulerDrawer(VennData diagram) {
-        String [][] data = diagram.data;
-        HashMap<String, Double> sets = new HashMap<String, Double>();
-        for (int i = 0; i < data.length; i++) {
-            String[] s = data[i][0].split("&");
-            for (int j = 0; j < s.length; j++) {
-                if (!sets.containsKey(s[j])) {
-                    Double cat = new Double(sets.size());
-                    sets.put(s[j], cat);
-                }
-            }
-        }
-
-        for(String s: sets.keySet()) {
-            System.out.println(s + " " + sets.get(s));
-        }
+        adp = new AbstractDiagramProvider(diagram);
     }
 
     public VennDiagram layout() {
-        ArrayList<String> zones = new ArrayList<String>(Arrays.asList("0", "a", "b", "ab"));
-        HashMap<String, Double> zonemap = new HashMap<String, Double>();
-        zonemap.put("0", 1.0);
-        zonemap.put("a", 100.0);
-        zonemap.put("b", 100.0);
-        zonemap.put("ab", 10.0);
-        org.eulerdiagrams.vennom.apCircles.AbstractDiagram ad = new org.eulerdiagrams.vennom.apCircles.AbstractDiagram(zones);
-        AreaSpecification as = new AreaSpecification(ad, zonemap);
+        AreaSpecification as = adp.asAreaSpecification();;
         JFrame frame = new JFrame();
         GraphDrawer gd = new APForceModel();
         APCirclePanel apc = new APCirclePanel(frame);
