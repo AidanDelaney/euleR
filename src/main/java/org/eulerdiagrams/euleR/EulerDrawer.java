@@ -48,11 +48,10 @@ class EulerDrawer {
         // <<<
     }
 
-    // FIXME: Default constructor only here to help with initial R integration.
-    public EulerDrawer() {
+    public EulerDrawer(AbstractDiagram diagram) {
     }
 
-    public EulerDrawer(AbstractDiagram diagram) {
+    public EulerDrawer(VennDiagram diagram) {
     }
 
     public VennDiagram layout() {
