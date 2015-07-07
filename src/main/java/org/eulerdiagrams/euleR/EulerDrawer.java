@@ -66,6 +66,7 @@ class EulerDrawer {
         APCirclePanel apc = new APCirclePanel(frame);
         apc.setSpecification(as);
         apc.addGraphDrawer(gd);
+
         apc.setGraph(as.generateAugmentedIntersectionGraph());
         gd.layout();
 
