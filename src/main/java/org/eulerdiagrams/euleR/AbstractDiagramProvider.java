@@ -25,7 +25,7 @@ import org.eulerdiagrams.AbstractDiagram.*;
  * want to eventually drop the Rodgers microsyntax.
  */
 class AbstractDiagramProvider {
-    private org.eulerdiagrams.AbstractDiagram.AbstractDiagram diagram;
+    private org.eulerdiagrams.AbstractDiagram.WeightedAbstractDiagram diagram;
 
     // The apCircles.AbstractDiagram only likes single letter contour labels.
     // We use this to keep track of the translation between our AbstractDiagram
@@ -54,7 +54,7 @@ class AbstractDiagramProvider {
             }
         }
 
-        diagram = new org.eulerdiagrams.AbstractDiagram.AbstractDiagram(contours);
+        diagram = new org.eulerdiagrams.AbstractDiagram.WeightedAbstractDiagram(contours);
         // This is horrible, we're relying on weights and inzs to have the same
         // length.
         for(int i = 0; i < weights.length; i++) {
@@ -62,7 +62,7 @@ class AbstractDiagramProvider {
         }
     }
 
-    public AbstractDiagramProvider(org.eulerdiagrams.AbstractDiagram.AbstractDiagram diagram) {
+    public AbstractDiagramProvider(org.eulerdiagrams.AbstractDiagram.WeightedAbstractDiagram diagram) {
         this.diagram = diagram;
     }
 

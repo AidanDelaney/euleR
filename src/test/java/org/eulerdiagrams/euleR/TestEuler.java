@@ -19,7 +19,7 @@ public class TestEuler {
         contours.add(a);
         contours.add(b);
 
-        AbstractDiagram d = new AbstractDiagram(contours);
+        WeightedAbstractDiagram d = new WeightedAbstractDiagram(contours);
         d.addZone(100.0, a);
         d.addZone(100.0, b);
         d.addZone(50.0, a, b);
@@ -40,7 +40,7 @@ public class TestEuler {
         contours.add(b);
         contours.add(c);
 
-        AbstractDiagram d = new AbstractDiagram(contours);
+        WeightedAbstractDiagram d = new WeightedAbstractDiagram(contours);
         d.addZone(100.0, a);
         d.addZone(100.0, b);
         d.addZone(40.0, a, b);

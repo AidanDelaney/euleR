@@ -1,6 +1,6 @@
 package org.eulerdiagrams.euleR;
 
-import org.eulerdiagrams.AbstractDiagram.AbstractDiagram;
+import org.eulerdiagrams.AbstractDiagram.WeightedAbstractDiagram;
 import org.eulerdiagrams.vennom.apCircles.drawers.APForceModel;
 import org.eulerdiagrams.vennom.graph.*;
 import org.eulerdiagrams.vennom.apCircles.*;
@@ -54,7 +54,7 @@ class EulerDrawer {
 
     private AbstractDiagramProvider adp;
 
-    public EulerDrawer(AbstractDiagram diagram) {
+    public EulerDrawer(WeightedAbstractDiagram diagram) {
         adp = new AbstractDiagramProvider(diagram);
     }
 
