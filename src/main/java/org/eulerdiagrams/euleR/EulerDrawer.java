@@ -1,15 +1,18 @@
 package org.eulerdiagrams.euleR;
 
+import org.eulerdiagrams.AbstractDiagram.AbstractDiagram;
 import org.eulerdiagrams.vennom.apCircles.drawers.APForceModel;
 import org.eulerdiagrams.vennom.graph.*;
 import org.eulerdiagrams.vennom.apCircles.*;
-import static org.eulerdiagrams.vennom.apCircles.display.APCircleDisplay.*;
 
+import static org.eulerdiagrams.vennom.apCircles.display.APCircleDisplay.*;
 import edu.uic.ncdm.venn.VennDiagram;
 import edu.uic.ncdm.venn.data.VennData;
+
 import org.eulerdiagrams.vennom.graph.drawers.GraphDrawer;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;

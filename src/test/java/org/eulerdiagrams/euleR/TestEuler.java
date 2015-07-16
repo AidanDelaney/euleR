@@ -2,7 +2,9 @@ package org.eulerdiagrams.euleR;
 
 import edu.uic.ncdm.venn.VennDiagram;
 
+import org.eulerdiagrams.AbstractDiagram.*;
 import org.junit.*;
+
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
@@ -11,9 +13,9 @@ import java.util.*;
 public class TestEuler {
     @Test
     public void simpleTest() {
-        Set<Contour> contours = new HashSet<Contour>();
-        Contour a = new Contour("a");
-        Contour b = new Contour("b");
+        Set<AbstractContour> contours = new HashSet<AbstractContour>();
+        AbstractContour a = new AbstractContour("a");
+        AbstractContour b = new AbstractContour("b");
         contours.add(a);
         contours.add(b);
 
@@ -30,10 +32,10 @@ public class TestEuler {
 
     @Test
     public void testVenn3() {
-        Set<Contour> contours = new HashSet<Contour>();
-        Contour a = new Contour("a");
-        Contour b = new Contour("b");
-        Contour c = new Contour("c");
+        Set<AbstractContour> contours = new HashSet<AbstractContour>();
+        AbstractContour a = new AbstractContour("a");
+        AbstractContour b = new AbstractContour("b");
+        AbstractContour c = new AbstractContour("c");
         contours.add(a);
         contours.add(b);
         contours.add(c);
