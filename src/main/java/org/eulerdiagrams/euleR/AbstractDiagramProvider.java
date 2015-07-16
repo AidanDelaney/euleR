@@ -86,7 +86,7 @@ class AbstractDiagramProvider {
 
         // Then build the Rogers syntax for each zone
         StringBuilder apCirclesSyntax = new StringBuilder();
-        Map<AbstractZone, Double> weightmap = diagram.getZones();
+        Map<AbstractZone, Double> weightmap = diagram.getWeightedZones();
         HashMap<String, Double> pjrWeights = new HashMap<String, Double>();
         for(AbstractZone z: weightmap.keySet()) {
             StringBuilder pjrZone = new StringBuilder();
