@@ -20,6 +20,11 @@
       <artifactId>vennom</artifactId>
       <version>1.0.0-SNAPSHOT</version>
     </dependency>
+    <dependency>
+      <groupId>org.eulerdiagrams</groupId>
+      <artifactId>types</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
 
     <dependency>
       <groupId>org.hamcrest</groupId>
@@ -49,7 +54,7 @@
           <archive>
             <index>true</index>
             <manifest>
-              <mainClass>org.eulerdiagrams.euleR.Euler</mainClass>
+              <mainClass>org.eulerdiagrams.euleR.EulerDrawer</mainClass>
             </manifest>
             <manifestEntries>
               <mode>development</mode>

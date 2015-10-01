@@ -1,15 +1,18 @@
 package org.eulerdiagrams.euleR;
 
-import org.eulerdiagrams.vennom.apCircles.drawers.APForceModel;
+import org.eulerdiagrams.AbstractDiagram.WeightedAbstractDiagram;
+import org.eulerdiagrams.vennom.apCircles.drawers.GeneralAPForceModel;
 import org.eulerdiagrams.vennom.graph.*;
 import org.eulerdiagrams.vennom.apCircles.*;
-import static org.eulerdiagrams.vennom.apCircles.display.APCircleDisplay.*;
 
+import static org.eulerdiagrams.vennom.apCircles.display.APCircleDisplay.*;
 import edu.uic.ncdm.venn.VennDiagram;
 import edu.uic.ncdm.venn.data.VennData;
+
 import org.eulerdiagrams.vennom.graph.drawers.GraphDrawer;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,7 +54,7 @@ class EulerDrawer {
 
     private AbstractDiagramProvider adp;
 
-    public EulerDrawer(AbstractDiagram diagram) {
+    public EulerDrawer(WeightedAbstractDiagram diagram) {
         adp = new AbstractDiagramProvider(diagram);
     }
 
@@ -62,12 +65,12 @@ class EulerDrawer {
     public VennDiagram layout() {
         AreaSpecification as = adp.asAreaSpecification();;
         JFrame frame = new JFrame();
-        GraphDrawer gd = new APForceModel();
+        GraphDrawer gd = new GeneralAPForceModel();
         APCirclePanel apc = new APCirclePanel(frame);
         apc.setSpecification(as);
         apc.addGraphDrawer(gd);
 
-        apc.setGraph(as.generateAugmentedIntersectionGraph());
+        apc.setGraph(as.generateGeneralAugmentedIntersectionGraph());
         gd.layout();
 
         return graphToVennDiagram(gd.getGraph());
