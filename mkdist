@@ -10,12 +10,12 @@ VLIBNAME=vennom
 VLIBVER=1.0.0-SNAPSHOT
 
 TLIBNAME=venn-diagram-types
-TLIBNAME=1.0.0-SNAPSHOT
+TLIBVER=1.0.0-SNAPSHOT
 
 echo "Compiling Java sources ..."
-(cd src-java/${KLIBNAME}; mvn package -DpromoteTransitiveDependencies=true; cd ../..)
 (cd src-java/${TLIBNAME}; mvn package -DpromoteTransitiveDependencies=true; cd ../..)
 (cd src-java/${VLIBNAME}; mvn package -DpromoteTransitiveDependencies=true; cd ../..)
+(cd src-java/${KLIBNAME}; mvn package -DpromoteTransitiveDependencies=true; cd ../..)
 
 echo "$PNAME version ${VER}"
 
