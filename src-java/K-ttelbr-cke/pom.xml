@@ -75,6 +75,14 @@
           </execution>
         </executions>
       </plugin>
+      <!-- Configure Unit tests: do not impose tests to pass to build jar -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <testFailureIgnore>true</testFailureIgnore>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>
