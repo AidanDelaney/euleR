@@ -10,8 +10,8 @@ VLIBNAME=vennom
 VLIBVER=1.0.0-SNAPSHOT
 
 echo "Compiling Java sources ..."
-(cd src-java/${KLIBNAME}; mvn package; cd ../..)
-(cd src-java/${VLIBNAME}; mvn package; cd ../..)
+(cd src-java/${KLIBNAME}; mvn package -DpromoteTransitiveDependencies=true; cd ../..)
+(cd src-java/${VLIBNAME}; mvn package -DpromoteTransitiveDependencies=true; cd ../..)
 
 echo "$PNAME version ${VER}"
 
@@ -20,6 +20,8 @@ mkdir -p inst/java
 
 cp src-java/${KLIBNAME}/target/${KLIBNAME}-${KLIBVER}.jar inst/java
 cp src-java/${VLIBNAME}/target/${VLIBNAME}-${VLIBVER}.jar inst/java
+# The following will exist if ${KLIBNAME} successfully compiled
+cp ${HOME}/.m2/repository/com/google/collections/google-collections/1.0/google-collections-1.0.jar inst/java
 
 tar --transform='s,^,euleR/,' -czvf ${PNAME}-${PVER}.tar.gz inst man R DESCRIPTION NEWS NAMESPACE
 echo "Done."
