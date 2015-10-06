@@ -118,7 +118,7 @@ class AbstractDiagramProvider {
         // intersection is denoted with an ampersand.
         List<AbstractContour> contours = new Vector<AbstractContour>();
 
-        String [] contourLabels = usyntax.split("&");
+        String [] contourLabels = usyntax.split("~");
         for(String s: contourLabels) {
             contours.add(new AbstractContour(s));
         }
