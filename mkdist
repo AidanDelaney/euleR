@@ -1,7 +1,7 @@
 #!/bin/sh
 
 PNAME=euleR
-PVER=0.0.1
+PVER=1.0.0
 
 KLIBNAME=K-ttelbr-cke
 KLIBVER=1.0.0-SNAPSHOT
@@ -13,8 +13,8 @@ TLIBNAME=venn-diagram-types
 TLIBVER=1.0.0-SNAPSHOT
 
 echo "Compiling Java sources ..."
-(cd src-java/${TLIBNAME}; mvn package -DpromoteTransitiveDependencies=true; cd ../..)
-(cd src-java/${VLIBNAME}; mvn package -DpromoteTransitiveDependencies=true; cd ../..)
+(cd src-java/${TLIBNAME}; mvn install -DpromoteTransitiveDependencies=true; cd ../..)
+(cd src-java/${VLIBNAME}; mvn install -DpromoteTransitiveDependencies=true; cd ../..)
 (cd src-java/${KLIBNAME}; mvn package -DpromoteTransitiveDependencies=true; cd ../..)
 
 echo "$PNAME version ${VER}"
