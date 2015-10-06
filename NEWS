@@ -1,6 +1,9 @@
- NEWS/ChangeLog for venneuler
+ NEWS/ChangeLog for euleR
 ------------------------------
+1.0-0   2015-10-06
+    o   added venNom as a drawing backend.
 
+Based on the canges from venneuler:
 1.1-1	2013-02-19
     o	added more parameters to the plot() function
 

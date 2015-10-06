@@ -5,6 +5,6 @@ Author: Aidan Delaney <aidan@ontologyeingineering.org> based on work by Lee Wilk
 Maintainer: Aidan Delaney <aidan@ontologyeingineering.org>
 Depends: rJava
 Description: Calculates and displays Venn and Euler Diagrams
-SystemRequirement: Java 1.7 or higher
+SystemRequirement: Java 1.8 or higher
 License: MPL-1.1
 URL: https://github.com/AidanDelaney/euleR
