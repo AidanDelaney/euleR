@@ -44,6 +44,18 @@ class EulerDrawer {
         REPULSOR.setSelectedLineColor(Color.gray);
         REPULSOR.setPriority(1018);
 
+        IDEAL = new EdgeType("ideal");
+        IDEAL.setLineColor(Color.blue);
+        IDEAL.setTextColor(Color.blue);
+        IDEAL.setSelectedLineColor(Color.gray);
+        IDEAL.setPriority(1016);
+
+        CONTAINMENT = new EdgeType("containment");
+        CONTAINMENT.setLineColor(Color.magenta);
+        CONTAINMENT.setTextColor(Color.magenta);
+        CONTAINMENT.setSelectedLineColor(Color.magenta);
+        CONTAINMENT.setPriority(1016);
+
         Graph.DEFAULT_NODE_TYPE.setHeight(20);
         Graph.DEFAULT_NODE_TYPE.setWidth(20);
         Graph.DEFAULT_NODE_TYPE.setBorderColor(Color.WHITE);
