@@ -3,26 +3,5 @@
 PNAME=euleR
 PVER=1.0.0
 
-KLIBNAME=K-ttelbr-cke
-KLIBVER=1.0.0-SNAPSHOT
-
-VLIBNAME=vennom
-VLIBVER=1.0.0-SNAPSHOT
-
-TLIBNAME=venn-diagram-types
-TLIBVER=1.0.0-SNAPSHOT
-
-echo "Compiling Java sources ..."
-(cd src-java/${TLIBNAME}; mvn install -DpromoteTransitiveDependencies=true; cd ../..)
-(cd src-java/${VLIBNAME}; mvn install -DpromoteTransitiveDependencies=true; cd ../..)
-(cd src-java/${KLIBNAME}; mvn package -DpromoteTransitiveDependencies=true; cd ../..)
-
-echo "$PNAME version ${VER}"
-
-echo "Creating package ..."
-mkdir -p inst/java
-
-cp src-java/${KLIBNAME}/target/${KLIBNAME}-${KLIBVER}.jar inst/java
-
 tar --transform='s,^,euleR/,' -czvf ${PNAME}-${PVER}.tar.gz inst man R DESCRIPTION NEWS NAMESPACE
 echo "Done."
