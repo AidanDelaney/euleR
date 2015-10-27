@@ -24,15 +24,18 @@ euleR <- function (combinations, url, ...) {
 }
 
 plot.euleR <- function(d) {
-  max_radius <- max(sapply(d$circles, function (x) x$r))
-  max_x <- max(sapply(d$circles, function (x) x$xc))
-  min_x <- min(sapply(d$circles, function (x) x$xc))
-  max_y <- max(sapply(d$circles, function (x) x$yc))
-  min_y <- min(sapply(d$circles, function (x) x$yc))
+  max_radius <- max(sapply(d$circles, function (x) x$circle$r))
+  max_x <- max(sapply(d$circles, function (x) x$circle$xc))
+  min_x <- min(sapply(d$circles, function (x) x$circle$xc))
+  max_y <- max(sapply(d$circles, function (x) x$circle$yc))
+  min_y <- min(sapply(d$circles, function (x) x$circle$yc))
   
   # Create a large enough canvas
   emptyplot(xlim=c(min_x - max_radius, max_x + max_radius), ylim=c(min_y - max_radius, max_y + max_radius))
   
-  sapply(d$circles, function (x) filledcircle(r1=x$r, mid=c(x$xc, x$yc), col=rgb(1,1,1,0), lcol="black"))
+  sapply(d$circles, function (x) { 
+    filledcircle(r1=x$circle$r, mid=c(x$circle$xc, x$circle$yc), col=rgb(1,1,1,0), lcol="black")
+    text(x$circle$xc, x$circle$yc, x$label)
+    })
 }
 
