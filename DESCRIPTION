@@ -3,8 +3,8 @@ Version: 1.0.0
 Title: Venn and Euler Diagrams
 Author: Aidan Delaney <aidan@ontologyeingineering.org> based on work by Lee Wilkinson <leland.wilkinson@gmail.com>
 Maintainer: Aidan Delaney <aidan@ontologyeingineering.org>
-Depends: rJava
+Depends: shape RCurl rjson
 Description: Calculates and displays Venn and Euler Diagrams
-SystemRequirement: Java 1.8 or higher
+SystemRequirement: Web connection required
 License: MPL-1.1
 URL: https://github.com/AidanDelaney/euleR
