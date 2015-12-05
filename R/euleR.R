@@ -6,21 +6,25 @@ euleR <- function (combinations, url, ...) {
   j <- foreach(i = 1:length(combinations)) %do% combinations[i]
   l <- list("area_specifications" = j)
   json <- toJSON(l)
-  print(json)
-
-  httpheader <- c(Accept="application/json; charset=UTF-8",
-                  "Content-Type"="application/json")
+  #print(json)
 
   if(missing(url)) {
     # if you don't provide a URL we'll use a test one.
-    r <- postForm('http://localhost:8080/layout', .opts=list(httpheader=httpheader
-                                                      ,postfields=json))
+    resp <- doFormPost('http://localhost:8080/layout', json)
   } else {
-    r <- postForm(url, .opts=list(httpheader=httpheader
-                                  ,postfields=json))
+    resp <- doFormPost(url, json)
   }
-  print(r)
-  fromJSON(r)
+  fromJSON(resp)
+}
+
+doFormPost <- function (url, json) {
+  #if(!(url.exists(url, .opts=list(post=1L)))) {
+  #  stop(paste("The requested URL cannot be contacted: ", url))
+  #}
+  httpheader <- c(Accept="application/json; charset=UTF-8",
+                  "Content-Type"="application/json")
+  response <- postForm(url, .opts=list(httpheader=httpheader
+                                       ,postfields=json))
 }
 
 plot.euleR <- function(d) {
@@ -38,4 +42,3 @@ plot.euleR <- function(d) {
     text(x$x, x$y, x$label)
     })
 }
-
