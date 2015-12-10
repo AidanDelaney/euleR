@@ -1,2 +1,2 @@
 export(euleR)
-S4method(plot, euleR)
+S3method(plot, euleR)
