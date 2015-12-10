@@ -14,7 +14,7 @@ euleR <- function (combinations, url, ...) {
   } else {
     resp <- doFormPost(url, json)
   }
-  fromJSON(resp)
+  structure(fromJSON(resp), class="euleR")
 }
 
 doFormPost <- function (url, json) {
