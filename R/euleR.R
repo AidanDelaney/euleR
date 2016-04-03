@@ -28,6 +28,10 @@ doFormPost <- function (url, json) {
 }
 
 plot.euleR <- function(d) {
+
+  if(0 == length(d$circles)) {
+       return()
+  }
   max_radius <- max(sapply(d$circles, function (x) x$radius))
   max_x <- max(sapply(d$circles, function (x) x$x))
   min_x <- min(sapply(d$circles, function (x) x$x))

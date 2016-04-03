@@ -1,7 +1,7 @@
 #!/bin/sh
 
 PNAME=euleR
-PVER=2.1.0
+PVER=2.2.1
 
 tar --transform='s,^,euleR/,' -czvf ${PNAME}-${PVER}.tar.gz man R DESCRIPTION NEWS NAMESPACE
 echo "Done."
